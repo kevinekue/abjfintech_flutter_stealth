@@ -17,6 +17,7 @@ In order to run this api locally, you'll need the following:
 to run the api:
 
 ```bash
+# Navigate to the directory
 # Upgrade pip
 pip install --upgrade pip
 
@@ -28,6 +29,9 @@ uvicorn main:app --reload
 
 # Stop the service
 CTRL + C
+
+# To run the unit tests, simply enter the following in your terminal
+pytest
 ```
 
 You can access an interactive API documentation that will allow you to place sample requests once the api's running:
