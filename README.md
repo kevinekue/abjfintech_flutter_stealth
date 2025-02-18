@@ -5,8 +5,8 @@ This project was built with the intention to demo a Plutterwave api integration.
 It assumes that the reader has Python installed (https://www.python.org/downloads/), and ideally a virtual environment set up (https://docs.python.org/3/library/venv.html) 
 
 It exclusively focuses here on the following two functionalities:
-* A payment transaction initiation within francophone Africa: ```/api/v1/payment/initiate```
-* A status verification of said transaction: ``` /api/v1/payment/verify?transactionId={transaction_id_value}```
+* A payment transaction initiation within francophone Africa: ```/payment/initiate```
+* A status verification of said transaction: ``` /payment/verify?transaction_id={transaction_id_value}```
 
 In order to run this api locally, you'll need the following: 
 * A Flutterwave test account: it's required for the retrieval of your api keys (https://flutterwave.com/tz/support/my-account/getting-your-api-keys), and api whitelisting(https://flutterwave.com/ng/support/integrations/how-to-whitelist-ip-addresses-on-your-flutterwave-dashboard)

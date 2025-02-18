@@ -57,9 +57,9 @@ async def test_initiate_payment(async_client):
     init_request = mock_data_dict['init_request']
     init_response = mock_data_dict['init_response']
 
-    respx.post("/api/v1/payment/initiate").mock(return_value=httpx.Response(200, json=init_response))
+    respx.post("/payment/initiate").mock(return_value=httpx.Response(200, json=init_response))
 
-    response = await async_client.post("/api/v1/payment/initiate", json=init_request)
+    response = await async_client.post("/payment/initiate", json=init_request)
     assert response.status_code == 200
     assert len(response.json()["status_history"]) == 1
     assert response.json()["status"] == "pending"
@@ -74,9 +74,9 @@ async def test_verify_transaction(async_client):
 
     transaction_verification_response = mock_data_dict['verification_response']
         
-    respx.get(f"/api/v1/payment/verify?transaction_id={transaction_id}").mock(return_value=httpx.Response(200, json=transaction_verification_response))
+    respx.get(f"/payment/verify?transaction_id={transaction_id}").mock(return_value=httpx.Response(200, json=transaction_verification_response))
 
-    response = await async_client.get(f"/api/v1/payment/verify?transaction_id={transaction_id}")
+    response = await async_client.get(f"/payment/verify?transaction_id={transaction_id}")
     assert response.status_code == 200
     assert len(response.json()["status_history"]) == 2
     assert response.json()["status"] != init_response["status"]
@@ -94,9 +94,9 @@ async def test_initiate_payment_invalid_currency(async_client):
 
     init_response_bad_currency = mock_data_dict['bad_currency_response']
         
-    respx.post("/api/v1/payment/initiate").mock(return_value=httpx.Response(422, json=init_response_bad_currency))
+    respx.post("/payment/initiate").mock(return_value=httpx.Response(422, json=init_response_bad_currency))
 
-    response = await async_client.post("/api/v1/payment/initiate", json=init_request)
+    response = await async_client.post("/payment/initiate", json=init_request)
     assert response.status_code == 422
     assert response.json()["detail"][0]["msg"] == "Input should be 'NGN', 'GHS', 'KES', 'UGX', 'TZS', 'USD', 'OT', 'XOF' or 'XAF'"
 
@@ -110,9 +110,9 @@ async def test_initiate_payment_missing_required_field(async_client):
     init_request['tx_ref'] = None
     missing_req_field_response = mock_data_dict['missing_req_field_response']
 
-    respx.post("/api/v1/payment/initiate").mock(return_value=httpx.Response(422, json=missing_req_field_response))
+    respx.post("/payment/initiate").mock(return_value=httpx.Response(422, json=missing_req_field_response))
 
-    response = await async_client.post("/api/v1/payment/initiate", json=init_request)
+    response = await async_client.post("/payment/initiate", json=init_request)
     assert response.status_code == 422
     assert response.json()["detail"][0]["msg"] == "Field required"
     assert response.json()["detail"][0]["type"] == "missing"

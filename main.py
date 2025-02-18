@@ -29,14 +29,14 @@ def serialize_object(obj):
     return {k: v for k, v in obj.__dict__.items() if not isinstance(v, threading.Lock)}
 
 
-@app.post("/api/v1/payment/initiate", response_model_by_alias=False, response_model=Transaction)
+@app.post("/payment/initiate", response_model_by_alias=False, response_model=Transaction)
 async def initiate_payment(payment_info: PaymentRequest):
 
     payment_initiation_response = initiate_payment_client(payment_info)
     await add_transaction_to_db(payment_initiation_response)
     return payment_initiation_response
 
-@app.get("/api/v1/payment/verify", response_model_by_alias=False, response_model=Transaction)
+@app.get("/payment/verify", response_model_by_alias=False, response_model=Transaction)
 async def verify_transaction(transaction_id: str):
 
     return await verify_transaction_status_client(transaction_id)

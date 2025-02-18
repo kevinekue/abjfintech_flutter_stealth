@@ -23,7 +23,7 @@
           }
         }
       },
-      "/api/v1/payment/initiate": {
+      "/payment/initiate": {
         "post": {
           "summary": "Initiate Payment",
           "operationId": "initiate_payment_api_v1_payment_initiate_post",
@@ -61,7 +61,7 @@
           }
         }
       },
-      "/api/v1/payment/verify": {
+      "/payment/verify": {
         "get": {
           "summary": "Verify Transaction",
           "operationId": "verify_transaction_api_v1_payment_verify_get",
