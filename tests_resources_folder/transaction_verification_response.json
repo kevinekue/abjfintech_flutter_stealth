@@ -1,0 +1,34 @@
+{
+    "id": 8392688,
+    "tx_ref": "gvghbv",
+    "flw_ref": "FLWTK43726MCK1739776592306",
+    "device_fingerprint": "N/A",
+    "amount": 100,
+    "amount_settled": 98,
+    "charged_amount": 100,
+    "app_fee": 2,
+    "merchant_fee": 0,
+    "processor_response": "Transaction Successful",
+    "auth_model": "AUTH",
+    "currency": "XAF",
+    "ip": "52.209.154.143",
+    "narration": "Keveen Roz 1739324087845",
+    "status": "successful",
+    "payment_type": "mobilemoneysn",
+    "fraud_status": null,
+    "charge_type": null,
+    "created_at": "2025-02-17T07:16:31.000Z",
+    "account_id": 2586597,
+    "customer": {
+      "id": 2589027,
+      "phone_number": "24709929220",
+      "name": "Anonymous customer",
+      "email": "JoeBloggs@acme.co",
+      "created_at": "2025-02-16T06:40:25.000Z"
+    },
+    "meta": null,
+    "status_history": {
+      "2025-02-17T01:16:32.678453": "pending",
+      "2025-02-17T01:17:27.978075": "successful"
+    }
+  }

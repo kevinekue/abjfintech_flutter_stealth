@@ -1,0 +1,18 @@
+{
+    "detail": [
+      {
+        "type": "missing",
+        "loc": [
+          "body",
+          "tx_ref"
+        ],
+        "msg": "Field required",
+        "input": {
+          "phone_number": "24709929220",
+          "amount": 100,
+          "currency": "XOF",
+          "email": "JoeBloggs@acme.co"
+        }
+      }
+    ]
+  }

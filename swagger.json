@@ -1,0 +1,218 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "FastAPI",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "Root",
+          "operationId": "root__get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/payment/initiate": {
+        "post": {
+          "summary": "Initiate Payment",
+          "operationId": "initiate_payment_api_v1_payment_initiate_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/payment/verify": {
+        "get": {
+          "summary": "Verify Transaction",
+          "operationId": "verify_transaction_api_v1_payment_verify_get",
+          "parameters": [
+            {
+              "name": "transaction_id",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Transaction Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Currency": {
+          "type": "string",
+          "enum": [
+            "NGN",
+            "GHS",
+            "KES",
+            "UGX",
+            "TZS",
+            "USD",
+            "OT",
+            "XOF",
+            "XAF"
+          ],
+          "title": "Currency"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "PaymentRequest": {
+          "properties": {
+            "phone_number": {
+              "type": "string",
+              "title": "Phone Number"
+            },
+            "amount": {
+              "type": "number",
+              "title": "Amount"
+            },
+            "currency": {
+              "$ref": "#/components/schemas/Currency"
+            },
+            "email": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Email"
+            },
+            "tx_ref": {
+              "type": "string",
+              "title": "Tx Ref"
+            },
+            "is_mobile_money_franco": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Is Mobile Money Franco"
+            }
+          },
+          "type": "object",
+          "required": [
+            "phone_number",
+            "amount",
+            "currency",
+            "tx_ref"
+          ],
+          "title": "PaymentRequest"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      }
+    }
+  }

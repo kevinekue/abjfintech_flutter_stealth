@@ -1,0 +1,16 @@
+{
+    "detail": [
+      {
+        "type": "enum",
+        "loc": [
+          "body",
+          "currency"
+        ],
+        "msg": "Input should be 'NGN', 'GHS', 'KES', 'UGX', 'TZS', 'USD', 'OT', 'XOF' or 'XAF'",
+        "input": "jkdsfned",
+        "ctx": {
+          "expected": "'NGN', 'GHS', 'KES', 'UGX', 'TZS', 'USD', 'OT', 'XOF' or 'XAF'"
+        }
+      }
+    ]
+  }
